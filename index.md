@@ -10,7 +10,7 @@ layout: default
 </div>
 
 <map name="image-map">
-    <area target="_blank" alt="Intro to Unix and the Command-Line" title="Intro to Unix and the Command-Line" href="intro unix" coords="1,129,122,190" shape="rect">
+    <area target="_blank" alt="Intro to Unix and the Command-Line" title="Intro to Unix and the Command-Line" href="intro_unix.html" coords="1,129,122,190" shape="rect">
     <area target="_blank" alt="Intro to Bioinformatics" title="Intro to Bioinformatics" href="bioinfo intro" coords="159,131,282,190" shape="rect">
     <area target="_blank" alt="Intro to Python" title="Intro to Python" href="intro to python" coords="159,380,281,440" shape="rect">
     <area target="_blank" alt="Genome Assembly" title="Genome Assembly" href="genome assembly" coords="361,0,480,60" shape="rect">

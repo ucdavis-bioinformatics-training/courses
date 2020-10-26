@@ -1,13 +1,37 @@
 theme: jekyll-theme-minimal
-title: 'UC Davis Bioinformatics Workshop Base Template'
+title: 'UC Davis Bioinformatics Courses'
 show_downloads: True
 google_analytics: True
 navigation:
   - title: Home
     url: /
 
-  - heading: Introduction
-  - title: Intro to the Workshop and Core
-    url: welcome
-  - title: Examples of Markdown Formatting
-    url: examples
+  - heading: Courses
+  - title: Intro to Unix and the Command-Line
+    url: intro_unix
+  - title: Intro to Bioinformatics
+    url: intro_bioinfo
+  - title: Genome Assembly
+    url: assembly
+  - title: Variant Analysis
+    url: variant
+  - title: Intro to R
+    url: intro_r
+  - title: Epigenetics Analysis
+    url: epigenetics
+  - title: Intro to Single-Cell RNA-Seq Analysis
+    url: intro_scrna
+  - title: Microbial Community Analysis
+    url: microbial
+  - title: mRNA-Seq Analysis
+    url: mrna_seq
+  - title: Iso-Seq
+    url: isoseq
+  - title: Advanced Single-Cell RNA-Seq Analysis
+    url: adv_scrna
+  - title: Transcriptomics
+    url: transcriptomics
+  - title: Intro to Python
+    url: intro_python
+  - title: Advanced Python for Bioinformatics
+    url: adv_python
