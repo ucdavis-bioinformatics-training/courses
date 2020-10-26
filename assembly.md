@@ -1,4 +1,5 @@
-#Genome Assembly
+Genome Assembly
+-----------
 
 Genome Assembly is currently in a renaissance, with new technologies coming together to complement each other, producing high-quality reference grade assemblies. This workshop will focus on project design, library and sequencing technologies, genome assembly and data type integration process, and evaluation in a practical and informative setting.
 

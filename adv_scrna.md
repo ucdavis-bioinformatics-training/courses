@@ -1,4 +1,5 @@
-#Advanced Single-Cell RNA-Seq Analysis
+Advanced Single-Cell RNA-Seq Analysis
+----------------
 
 This workshop will cover advanced topics in experimental design, data generation, and analysis of single cell RNA sequencing data on the command line and within the R statistical programming language. Participants will explore software and protocols, create and modify workflows, and diagnose/treat problematic data utilizing high performance computing services. Exercises will be performed on the command line and within R with a provided dataset.
 

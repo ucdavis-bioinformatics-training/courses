@@ -1,4 +1,5 @@
-#Introduction to R
+Introduction to R
+-----------
 
 This workshop will cover the basic computational and statistical concepts in bioinformatics analysis using R:
 
