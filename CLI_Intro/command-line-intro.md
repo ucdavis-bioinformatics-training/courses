@@ -172,40 +172,42 @@ Quick aside: what if I want to use same options repeatedly? and be lazy? You can
     ll
 
 
-<div id="quiz" class="quiz"></div>
-<button id="submit">Submit Quiz</button>
-<div id="results" class="output"></div>
+<div id="quiz1" class="quiz"></div>
+<button id="submit1">Submit Quiz</button>
+<div id="results1" class="output"></div>
 <script>
-const quizContainer = document.getElementById('quiz');
-const resultsContainer = document.getElementById('results');
-const submitButton = document.getElementById('submit');
+const quizContainer = document.getElementById('quiz1');
+const resultsContainer = document.getElementById('results1');
+const submitButton = document.getElementById('submit1');
 
 const myQuestions = [
   {
-    question: "Who invented JavaScript?",
+    question: "What does the -h option for the ls command do?",
     answers: {
-      a: "Douglas Crockford",
-      b: "Sheryl Sandberg",
-      c: "Brendan Eich"
+      a: "Creates a hard link to a file",
+      b: "Shows the file sizes in a human readable format",
+      c: "Shows the help page"
+      d: "Recursively lists directories"
     },
-    correctAnswer: "c"
+    correctAnswer: "b"
   },
   {
-    question: "Which one of these is a JavaScript package manager?",
+    question: "What does the -l option for ls do?",
     answers: {
-      a: "Node.js",
-      b: "TypeScript",
-      c: "npm"
+      a: "Produces a listing of all the links",
+      b: "Produces a time stamp sorted list",
+      c: "Produces a log file"
+      d: "Produces a detailed format list"
     },
-    correctAnswer: "c"
+    correctAnswer: "d"
   },
   {
-    question: "Which tool can you use to ensure code quality?",
+    question: "Which option turns off the default sort in the ls output?",
     answers: {
-      a: "Angular",
-      b: "jQuery",
-      c: "RequireJS",
-      d: "ESLint"
+      a: "-U",
+      b: "-t",
+      c: "--hide",
+      d: "-H"
     },
     correctAnswer: "d"
   }
