@@ -209,7 +209,7 @@ const myQuestions = [
       c: "--hide",
       d: "-H"
     },
-    correctAnswer: "d"
+    correctAnswer: "a"
   }
 ];
 
