@@ -251,11 +251,11 @@ Quick aside: what if I want to use same options repeatedly? and be lazy? You can
 <button id="submit1">Submit Quiz</button>
 <div id="results1" class="output"></div>
 <script>
-const quizContainer = document.getElementById('quiz1');
-const resultsContainer = document.getElementById('results1');
-const submitButton = document.getElementById('submit1');
+quizContainer = document.getElementById('quiz1');
+resultsContainer = document.getElementById('results1');
+submitButton = document.getElementById('submit1');
 
-const myQuestions = [
+myQuestions = [
   {
     question: "What does the -h option for the ls command do?",
     answers: {
@@ -359,11 +359,11 @@ I can't overstate how useful tab completion is. You should get used to using it 
 <button id="submit2">Submit Quiz</button>
 <div id="results2" class="output"></div>
 <script>
-const quizContainer = document.getElementById('quiz2');
-const resultsContainer = document.getElementById('results2');
-const submitButton = document.getElementById('submit2');
+quizContainer = document.getElementById('quiz2');
+resultsContainer = document.getElementById('results2');
+submitButton = document.getElementById('submit2');
 
-const myQuestions = [
+myQuestions = [
   {
     question: "What is the tilde short for?",
     answers: {
