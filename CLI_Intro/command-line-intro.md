@@ -172,6 +172,9 @@ Quick aside: what if I want to use same options repeatedly? and be lazy? You can
     ll
 
 ## Quiz
+<div id="quiz"></div>
+<button id="submit">Submit Quiz</button>
+<div id="results"></div>
 <script>
 const quizContainer = document.getElementById('quiz');
 const resultsContainer = document.getElementById('results');
@@ -282,9 +285,7 @@ function showResults(){
 buildQuiz();
 submitButton.addEventListener('click', showResults);
 </script>
-<div id="quiz"></div>
-<button id="submit">Submit Quiz</button>
-<div id="results"></div>
+
 
 ## Getting Around
 
