@@ -385,7 +385,7 @@ myQuestions = [
     correctAnswer: "c"
   },
   {
-    question: "After returning to your home directory (just enter 'cd' by itself), verify that the two following commands are equivalent (replacing 'username' with your actual username):\n\ncd ../../home/username/\ncd ../../../../../../../home/username/\n\nWhy are these very different-looking commands equivalent?",
+    question: "After returning to your home directory (just enter 'cd' by itself), verify that the two following commands are equivalent (replacing 'username' with your actual username):<br/><br/>cd ../../home/username/<br/>cd ../../../../../../../home/username/<br/><br/>Why are these very different-looking commands equivalent?",
     answers: {
       a: "The cd command knows where your home directory resides",
       b: "The terminal ignores excess dots",
