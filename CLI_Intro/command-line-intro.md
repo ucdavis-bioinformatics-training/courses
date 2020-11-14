@@ -172,7 +172,7 @@ Quick aside: what if I want to use same options repeatedly? and be lazy? You can
     ll
 
 
-<div id="quiz" class="output"></div>
+<div id="quiz" class="quiz"></div>
 <button id="submit">Submit Quiz</button>
 <div id="results" class="output"></div>
 <script>
