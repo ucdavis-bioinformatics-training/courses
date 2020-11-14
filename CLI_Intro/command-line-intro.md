@@ -71,27 +71,49 @@ The tilde (~) is a short form of a user’s home directory.
 
 <img src="figures/cli_figure3.png" alt="cli_figure3" width="800px"/>
 
-## Logging into a remote server
+# Logging In & Transferring Files
 
-For this we use the application Secure SHell ... SSH. Replace 'username' with your login name in the following and enter your password when prompted. You will not see your password being typed.
+You should already have an account on our systems
+
+## For Macs/Linux - Logging In
+
+1. Open a Terminal (usually under Applications/Utilities on a Mac), or install [iterm2](https://www.iterm2.com/)
+2. Cut and paste this into the terminal:
 
     ssh username@tadpole.genomecenter.ucdavis.edu
 
-for example my login is
+where 'username' is replaced with your username. Press Enter.
 
-    ssh msettles@tadpole.genomecenter.ucdavis.edu
-
-Once you're done working on the command line, you can exit. Anything that follows the character '#' is ignored.
-
-    exit  # kills the current shell!
+3. Type in your password. No characters will display when you are typing. Press Enter.
 
 <img src="figures/cli_figure4.png" alt="cli_figure4" width="800px"/>
 
-Go ahead and log back into the server.
+## For Windows - Logging In
+
+Windows needs a terminal to connect with, you have a few options:
+
+1. [Shell for Windows 10](https://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/)
+2. [Enable SSH](https://ittutorials.net/microsoft/windows-10/enable-ssh-windows-10-command-prompt/)
+OR
+3. [MobaXterm](https://mobaxterm.mobatek.net/)
+4. [PuTTY](http://www.putty.org/)
+
+In putty, mobaxterm:
+1. Open up terminal.
+2. In the Host Name field, type **tadpole.genomecenter.ucdavis.edu**
+3. Make sure the Connection Type is SSH.
+4. Press "Open". It will ask you for your username and password.
+
+In Shell with SSH enabled:
+
+    ssh username@tadpole.genomecenter.ucdavis.edu
+
+where 'username' is replaced with your username. Press Enter.
+
 
 After opening, system messages are often displayed, followed by the "prompt".
 A prompt is a short text message at the start of the command line and ends with '$' in bash shell, commands are typed after the prompt.
-The prompt typically follows the form **username@server:location$**
+The prompt typically follows the form **username@server:current_directory$**
 
 ## Command Line Basics
 
@@ -114,7 +136,7 @@ Because one of the first things that's good to know is *how to escape once you'v
 
     sleep 1000  # wait for 1000 seconds!
 
-Use Ctrl-c (shows as '^C' in screen) to exit (kill) a command. In some cases, a different key sequence is required (Ctrl-d).
+Use Ctrl-c (shows as '^C' in screen) to exit (kill) a command. In some cases, a different key sequence is required (Ctrl-d). Note that anything including and after a "#" symbol is ignored, i.e. a comment.
 
 
 #### Options
@@ -127,9 +149,9 @@ Lists directories and files *recursively*. how do I know which options do what?
 
     man ls
 
-Navigate like in 'less' (up,down,pgup,pgdn,g,G,/pattern,n,N,q), look up and try the following, if you don't say where, it lists files in your current directory
+Navigate this page using the up and down arrow keys, PageUp and PageDown, q to quit. In this manual page, find the following options, and then try those commands.
 
-    ls -l
+    ls -l # Not specifying a directory means that the current directory will be used
     ls -a
     ls -l -a
     ls -la  # option 'smushing' ... when no values need specifying
@@ -148,6 +170,121 @@ Quick aside: what if I want to use same options repeatedly? and be lazy? You can
 
     alias ll='ls -lah'
     ll
+
+## Quiz
+<script>
+const quizContainer = document.getElementById('quiz');
+const resultsContainer = document.getElementById('results');
+const submitButton = document.getElementById('submit');
+
+const myQuestions = [
+  {
+    question: "Who invented JavaScript?",
+    answers: {
+      a: "Douglas Crockford",
+      b: "Sheryl Sandberg",
+      c: "Brendan Eich"
+    },
+    correctAnswer: "c"
+  },
+  {
+    question: "Which one of these is a JavaScript package manager?",
+    answers: {
+      a: "Node.js",
+      b: "TypeScript",
+      c: "npm"
+    },
+    correctAnswer: "c"
+  },
+  {
+    question: "Which tool can you use to ensure code quality?",
+    answers: {
+      a: "Angular",
+      b: "jQuery",
+      c: "RequireJS",
+      d: "ESLint"
+    },
+    correctAnswer: "d"
+  }
+];
+
+function buildQuiz(){
+  // variable to store the HTML output
+  const output = [];
+
+  // for each question...
+  myQuestions.forEach(
+    (currentQuestion, questionNumber) => {
+
+      // variable to store the list of possible answers
+      const answers = [];
+
+      // and for each available answer...
+      for(letter in currentQuestion.answers){
+
+        // ...add an HTML radio button
+        answers.push(
+          `<label>
+            <input type="radio" name="question${questionNumber}" value="${letter}">
+            ${letter} :
+            ${currentQuestion.answers[letter]}
+          </label>`
+        );
+      }
+
+      // add this question and its answers to the output
+      output.push(
+        `<div class="question"> ${currentQuestion.question} </div>
+        <div class="answers"> ${answers.join('')} </div>`
+      );
+    }
+  );
+
+  // finally combine our output list into one string of HTML and put it on the page
+  quizContainer.innerHTML = output.join('');
+}
+
+function showResults(){
+
+  // gather answer containers from our quiz
+  const answerContainers = quizContainer.querySelectorAll('.answers');
+
+  // keep track of user's answers
+  let numCorrect = 0;
+
+  // for each question...
+  myQuestions.forEach( (currentQuestion, questionNumber) => {
+
+    // find selected answer
+    const answerContainer = answerContainers[questionNumber];
+    const selector = `input[name=question${questionNumber}]:checked`;
+    const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+
+    // if answer is correct
+    if(userAnswer === currentQuestion.correctAnswer){
+      // add to the number of correct answers
+      numCorrect++;
+
+      // color the answers green
+      answerContainers[questionNumber].style.color = 'lightgreen';
+    }
+    // if answer is wrong or blank
+    else{
+      // color the answers red
+      answerContainers[questionNumber].style.color = 'red';
+    }
+  });
+
+  // show number of correct answers out of total
+  resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
+}
+
+buildQuiz();
+submitButton.addEventListener('click', showResults);
+</script>
+<div id="quiz"></div>
+<button id="submit">Submit Quiz</button>
+<div id="results"></div>
 
 ## Getting Around
 
@@ -206,7 +343,7 @@ tab with no enter should complete to 'one', then enter
 
     ls s
 
-tab with no enter completes up to 'se' since that's in common between seven and september. tab again and no enter, this second tab should cause listing of seven and september. type 'v' then tab and no enter now it's unique to seven, and should complete to seven. enter runs 'cat seven' command.
+tab with no enter completes up to 'se' since that's in common between seven and september. tab again and no enter, this second tab should cause listing of seven and september. type 'v' then tab and no enter now it's unique to seven, and should complete to seven. enter runs 'ls seven' command.
 
 I can't overstate how useful tab completion is. You should get used to using it constantly. Watch experienced users type and they maniacally hit tab once or twice in between almost every character. You don't have to go that far, of course, but get used to constantly getting feedback from hitting tab and you will save yourself a huge amount of typing and trying to remember weird directory and filenames.
 
@@ -221,7 +358,7 @@ Why are these very different-looking commands equivalent??
 
 ## Create and Destroy
 
-We already learned one command that will create a file, touch. Lets create a folder in /share/workshop for you to work in and then another directory cli. We will use the environment variable $USER, that is your username.
+We already learned one command that will create a file, touch. Lets create a folder in /share/workshop for you to work in and then another directory cli. We will use the environment variable $USER, that contains your username.
 
     cd  # home again
     echo $USER # echo to screen the contents of the variable $USER
@@ -318,7 +455,7 @@ What's the first command you executed today? How many times have you used the 'm
 
 ### CHALLENGE
 
-How would you create a second text file - let's say 'test2.txt' - with the line that says 'third' *before* the line that says 'second'? Without directly editing the file with a text editor, of course ..
+How would you create a second text file - let's say 'test2.txt' - with the line that says 'third' *before* the line that says 'second'? Without directly editing the file with a text editor, of course...
 
 ## Editing Yourself
 Here are some more ways to make editing previous commands, or novel commands that you're building up, easier:
@@ -395,7 +532,7 @@ The quote characters " and ' are different. In general, single quotes preserve t
     echo '$VRBL'
     echo "$VRBL"
 
-However, some commands try to be 'smarter' about this behavior, so it's a little hard to predict what will happen in all cases. It's safest to experiment first when planning a command that depends on quoting ... list filenames first, instead of changing them, etc. Finally, the 'backtic' characters \` (same key - unSHIFTED - as the tilde ~) causes the shell to interpret what's between them as a command, and return the result.
+However, some commands try to be 'smarter' about this behavior, so it's a little hard to predict what will happen in all cases. It's safest to experiment first when planning a command that depends on quoting ... list filenames first, instead of changing them, etc. Finally, the 'backtick' characters \` (same key - unSHIFTED - as the tilde ~) causes the shell to interpret what's between them as a command, and return the result.
 
     echo `$VRBL`  # tries to execute a command with the name *someText*
     newVRBL=`echo $VRBL`
