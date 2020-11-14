@@ -172,6 +172,8 @@ Quick aside: what if I want to use same options repeatedly? and be lazy? You can
     ll
 
 
+## Quiz
+
 <div id="quiz1" class="quiz"></div>
 <button id="submit1">Submit Quiz</button>
 <div id="results1" class="output"></div>
