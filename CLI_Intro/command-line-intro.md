@@ -172,9 +172,9 @@ Quick aside: what if I want to use same options repeatedly? and be lazy? You can
     ll
 
 ## Quiz
-<div id="quiz"></div>
+<div id="quiz" class="output"></div>
 <button id="submit">Submit Quiz</button>
-<div id="results"></div>
+<div id="results" class="output"></div>
 <script>
 const quizContainer = document.getElementById('quiz');
 const resultsContainer = document.getElementById('results');
