@@ -1,10 +1,10 @@
 <script>
-function buildQuiz(){
+function buildQuiz(myq, qc){
   // variable to store the HTML output
   const output = [];
 
   // for each question...
-  myQuestions.forEach(
+  myq.forEach(
     (currentQuestion, questionNumber) => {
 
       // variable to store the list of possible answers
@@ -32,19 +32,19 @@ function buildQuiz(){
   );
 
   // finally combine our output list into one string of HTML and put it on the page
-  quizContainer.innerHTML = output.join('');
+  qc.innerHTML = output.join('');
 }
 
-function showResults(){
+function showResults(myq, qc, rc){
 
   // gather answer containers from our quiz
-  const answerContainers = quizContainer.querySelectorAll('.answers');
+  const answerContainers = qc.querySelectorAll('.answers');
 
   // keep track of user's answers
   let numCorrect = 0;
 
   // for each question...
-  myQuestions.forEach( (currentQuestion, questionNumber) => {
+  myq.forEach( (currentQuestion, questionNumber) => {
 
     // find selected answer
     const answerContainer = answerContainers[questionNumber];
@@ -67,7 +67,7 @@ function showResults(){
   });
 
   // show number of correct answers out of total
-  resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
+  rc.innerHTML = `${numCorrect} out of ${myq.length}`;
 }
 </script>
 
@@ -250,11 +250,11 @@ Quick aside: what if I want to use same options repeatedly? and be lazy? You can
 <button id="submit1">Submit Quiz</button>
 <div id="results1" class="output"></div>
 <script>
-quizContainer = document.getElementById('quiz1');
-resultsContainer = document.getElementById('results1');
-submitButton = document.getElementById('submit1');
+quizContainer1 = document.getElementById('quiz1');
+resultsContainer1 = document.getElementById('results1');
+submitButton1 = document.getElementById('submit1');
 
-myQuestions = [
+myQuestions1 = [
   {
     question: "What does the -h option for the ls command do?",
     answers: {
@@ -287,8 +287,8 @@ myQuestions = [
   }
 ];
 
-buildQuiz();
-submitButton.addEventListener('click', showResults);
+buildQuiz(myQuestions1, quizContainer1);
+submitButton1.addEventListener('click', function() {showResults(myQuestions1, quizContainer1, resultsContainer1);});
 </script>
 
 
@@ -358,11 +358,11 @@ I can't overstate how useful tab completion is. You should get used to using it 
 <button id="submit2">Submit Quiz</button>
 <div id="results2" class="output"></div>
 <script>
-quizContainer = document.getElementById('quiz2');
-resultsContainer = document.getElementById('results2');
-submitButton = document.getElementById('submit2');
+quizContainer2 = document.getElementById('quiz2');
+resultsContainer2 = document.getElementById('results2');
+submitButton2 = document.getElementById('submit2');
 
-myQuestions = [
+myQuestions2 = [
   {
     question: "What is the tilde short for?",
     answers: {
@@ -395,8 +395,8 @@ myQuestions = [
   }
 ];
 
-buildQuiz();
-submitButton.addEventListener('click', showResults);
+buildQuiz(myQuestions2, quizContainer2);
+submitButton2.addEventListener('click', function() {showResults(myQuestions2, quizContainer2, resultsContainer2);});
 </script>
 
 ## Create and Destroy
