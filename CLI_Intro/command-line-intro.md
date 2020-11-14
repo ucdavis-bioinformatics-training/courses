@@ -288,8 +288,6 @@ const myQuestions = [
   }
 ];
 
-
-
 buildQuiz();
 submitButton.addEventListener('click', showResults);
 </script>
@@ -334,7 +332,6 @@ You can think of paths like addresses. You can tell your friend how to go to a p
     cd /share/workshop/
     pwd
 
-
 Now, because it can be a real pain to type out, or remember these long paths, we need to discuss ...
 
 ## Tab Completion
@@ -355,6 +352,53 @@ tab with no enter should complete to 'one', then enter
 tab with no enter completes up to 'se' since that's in common between seven and september. tab again and no enter, this second tab should cause listing of seven and september. type 'v' then tab and no enter now it's unique to seven, and should complete to seven. enter runs 'ls seven' command.
 
 I can't overstate how useful tab completion is. You should get used to using it constantly. Watch experienced users type and they maniacally hit tab once or twice in between almost every character. You don't have to go that far, of course, but get used to constantly getting feedback from hitting tab and you will save yourself a huge amount of typing and trying to remember weird directory and filenames.
+
+## Quiz 2
+
+<div id="quiz2" class="quiz"></div>
+<button id="submit2">Submit Quiz</button>
+<div id="results2" class="output"></div>
+<script>
+const quizContainer = document.getElementById('quiz2');
+const resultsContainer = document.getElementById('results2');
+const submitButton = document.getElementById('submit2');
+
+const myQuestions = [
+  {
+    question: "What is the tilde short for?",
+    answers: {
+      a: "Your home directory",
+      b: "Your user name",
+      c: "Your current directory",
+      d: "The root directory"
+    },
+    correctAnswer: "a"
+  },
+  {
+    question: "What happens if you press tab once without any command?",
+    answers: {
+      a: "Nothing happens",
+      b: "Shows a listing of everything in the current directory",
+      c: "It wants to show you all the possible things you can run",
+      d: "You get an error message"
+    },
+    correctAnswer: "c"
+  },
+  {
+    question: "After returning to your home directory (just enter 'cd' by itself), verify that the two following commands are equivalent (replacing 'username' with your actual username):\n\ncd ../../home/username/\ncd ../../../../../../../home/username/\n\nWhy are these very different-looking commands equivalent?",
+    answers: {
+      a: "The cd command knows where your home directory resides",
+      b: "The terminal ignores excess dots",
+      c: "Because going one directory up from root just takes you back to root",
+      d: "Home is the root directory"
+    },
+    correctAnswer: "c"
+  }
+];
+
+buildQuiz();
+submitButton.addEventListener('click', showResults);
+</script>
 
 #### CHALLENGE
 
