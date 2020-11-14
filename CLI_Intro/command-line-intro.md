@@ -93,8 +93,7 @@ function showResults(){
 17. Symbolic Links (ln -s)
 18. STDOUT and STDERR (>1, >2)
 19. Paste Command (paste, for loops)
-20. Running in the Background (bg, &, nohup, jobs, kill, top)
-21. Shell Scripts and File Permissions (chmod, nano, ./)
+20. Shell Scripts and File Permissions (chmod, nano, ./)
 
 ### A CLI cheat sheet
 
@@ -699,68 +698,6 @@ Now we can number our four samples to conveniently refer to them in order
     cat c
 
 
-## Running in the Background
-
-Sometimes it's useful to continue working on the command line, even after you've executed a command that's going to take a while to finish. Normally this command would occupy the shell, and prevent you from typing in commands and receiving results. But we can 'put jobs in the background' so that they don't occupy your shell directly:
-
-    sleep 1000000
-
-Ctrl-Z to pause (stop) the command
-
-    bg
-
-To restart the last command in the background
-
-'^Z' first suspends the sleep command. Then, 'bg' resumes running that command *in the background*, so that it doesn't occupy the terminal. The output of the 'bg' command tells you that you have one command running in the background. You could start more, suspend them, then resume them in the background, and query what background jobs are running or are suspended, not running:
-
-    jobs
-
-<div class="output">[1]+  Running                 sleep 1000000 &
-</div>
-
-We can also start a job in the background in one step, without having to suspend then resume it, using the '&' character at the end of the command:
-
-    sleep 5000000 &
-
-If we want to delete these jobs for any reason, we can kill them using the numbering that 'jobs' reveals:
-
-    jobs
-
-<div class="output">[1]-  Running                 sleep 1000000 &
-[2]+  Running                 sleep 5000000 &
-</div>
-
-    kill %1
-    jobs
-
-<div class="output">[1]-  Terminated              sleep 1000000
-[2]+  Running                 sleep 5000000 &
-</div>
-
-    kill %2
-    jobs
-
-<div class="output">[2]+  Terminated              sleep 5000000
-</div>
-
-Finally, the 'nohup' command (from 'no hangup'!) makes jobs extra resistant to lost connections or terminal problems. In other words, even jobs running in the background can be terminated if one's shell dies. 'nohup' separates the running job from the shell, so it'll keep running until it dies or is actively killed by you.
-
-    nohup sleep 1000000 &
-
-<div class="output">[1] 34993
-username@c4-0:~/CLB$ nohup: ignoring input and appending output to nohup.out
-</div>
-
-    jobs
-
-<div class="output">[1]+  Running                 nohup sleep 1000000 &
-</div>
-
-output is dumped into the 'nohup.out' file unless specifically redirected in your command
-
-    kill %1
-
-If you used bg to send a process to the background you can use 'disown' to "nohup" the process
 
 ## Table of Processes (top)
 
