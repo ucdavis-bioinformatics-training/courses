@@ -186,7 +186,7 @@ const myQuestions = [
     answers: {
       a: "Creates a hard link to a file",
       b: "Shows the file sizes in a human readable format",
-      c: "Shows the help page"
+      c: "Shows the help page",
       d: "Recursively lists directories"
     },
     correctAnswer: "b"
@@ -196,7 +196,7 @@ const myQuestions = [
     answers: {
       a: "Produces a listing of all the links",
       b: "Produces a time stamp sorted list",
-      c: "Produces a log file"
+      c: "Produces a log file",
       d: "Produces a detailed format list"
     },
     correctAnswer: "d"
