@@ -112,8 +112,34 @@ function showResults(myq, qc, rc){
 
 <img src="figures/cli_figure1.png" alt="cli_figure1" width="800px"/>
 
+# Logging In
 
-A greater than sign (>) instead of a prompt means the shell is expecting more input. Can Cntr-c to cancel the operation and return to a prompt.
+In order to log in, you should have already created an account on our systems.
+
+## For Macs/Linux/Windows 10 - Logging In
+
+1. For Macs, open a Terminal (usually under Applications/Utilities on a Mac), or install [iterm2](https://www.iterm2.com/). For Linux, just open a regular terminal. For Windows 10, open a command prompt by searching for and running "cmd".
+ 
+2. Copy and paste this into the terminal:
+
+    ssh username@tadpole.genomecenter.ucdavis.edu
+
+where 'username' is replaced with your username. Press Enter. You will probably get a warning about not being able to establish the authenticity of the host and it will ask if you want to continue connecting. Just type "yes" and press enter.
+
+3. Type in your password. No characters will display when you are typing. Press Enter.
+
+## For Windows 8 and less
+
+1. Download and install [PuTTY](http://www.putty.org/).
+2. Open up PuTTY
+3. In the Host Name field, type **tadpole.genomecenter.ucdavis.edu**
+4. Make sure the Connection Type is SSH.
+5. Press "Open". It will ask you for your username and password.
+
+After opening, system messages are often displayed, followed by the "prompt".
+A prompt is a short text message at the start of the command line and ends with '$' in bash shell, commands are typed after the prompt. The prompt typically follows the form **username@server:current_directory$**. If your screen looks like the one below, i.e. your see your a bunch of messages and then your username followed by "@tadpole:~$" at the beginning of the line, then you are successfully logged in.
+
+<img src="figures/cli_figure4.png" alt="cli_figure4" width="800px"/>
 
 ## Directory Structure
 
@@ -142,50 +168,6 @@ The tilde (~) is a short form of a user’s home directory.
 * The separator used in issuing a command is space, number of spaces does not matter
 
 <img src="figures/cli_figure3.png" alt="cli_figure3" width="800px"/>
-
-# Logging In & Transferring Files
-
-You should already have an account on our systems
-
-## For Macs/Linux - Logging In
-
-1. Open a Terminal (usually under Applications/Utilities on a Mac), or install [iterm2](https://www.iterm2.com/)
-2. Cut and paste this into the terminal:
-
-    ssh username@tadpole.genomecenter.ucdavis.edu
-
-where 'username' is replaced with your username. Press Enter.
-
-3. Type in your password. No characters will display when you are typing. Press Enter.
-
-<img src="figures/cli_figure4.png" alt="cli_figure4" width="800px"/>
-
-## For Windows - Logging In
-
-Windows needs a terminal to connect with, you have a few options:
-
-1. [Shell for Windows 10](https://www.howtogeek.com/249966/how-to-install-and-use-the-linux-bash-shell-on-windows-10/)
-2. [Enable SSH](https://ittutorials.net/microsoft/windows-10/enable-ssh-windows-10-command-prompt/)
-OR
-3. [MobaXterm](https://mobaxterm.mobatek.net/)
-4. [PuTTY](http://www.putty.org/)
-
-In putty, mobaxterm:
-1. Open up terminal.
-2. In the Host Name field, type **tadpole.genomecenter.ucdavis.edu**
-3. Make sure the Connection Type is SSH.
-4. Press "Open". It will ask you for your username and password.
-
-In Shell with SSH enabled:
-
-    ssh username@tadpole.genomecenter.ucdavis.edu
-
-where 'username' is replaced with your username. Press Enter.
-
-
-After opening, system messages are often displayed, followed by the "prompt".
-A prompt is a short text message at the start of the command line and ends with '$' in bash shell, commands are typed after the prompt.
-The prompt typically follows the form **username@server:current_directory$**
 
 ## Command Line Basics
 
