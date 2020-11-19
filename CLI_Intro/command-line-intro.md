@@ -104,9 +104,9 @@ function showResults(myq, qc, rc){
 </object>
 
 
-## What is the command line
+## What is the Command-Line Interface
 
-* CLI is a tool into which one can type commands to perform tasks.
+* The CLI is a tool into which one can type commands to perform tasks.
 * The user interface that accepts the typed responses and displays the data on the screen is called a shell: bash, tcsh…
 * An all-text display (most of the time your mouse doesn't work)
 
@@ -177,7 +177,7 @@ First some basics - how to look at your surroundings.
 
 present working directory ... where am I?
 
-    ls .  
+    ls
 
 list files here ... you should see nothing since your homes are empty
 
@@ -190,7 +190,7 @@ Because one of the first things that's good to know is *how to escape once you'v
 
     sleep 1000  # wait for 1000 seconds!
 
-Use Ctrl-c (shows as '^C' in screen) to exit (kill) a command. In some cases, a different key sequence is required (Ctrl-d). Note that anything including and after a "#" symbol is ignored, i.e. a comment.
+Use Ctrl-c (shows as '^C' in the terminal) to exit (kill) a command. In some cases, a different key sequence is required (Ctrl-d). Note that anything including and after a "#" symbol is ignored, i.e. a comment.
 
 
 #### Options
