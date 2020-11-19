@@ -82,10 +82,10 @@ function showResults(myq, qc, rc){
 6. Getting Around (cd)
 7. Absolute and Relative Paths
 8. Tab Completion
-9. Create and Destroy (echo, cat, rm, rmdir)
-10. Piping and Redirection (\|, >, >>, cut, sort, grep)
-11. History Repeats Itself (history, head, tail, <up arrow>)
-12. Editing Yourself (Ctrl-A, Ctrl-E, Ctrl-K, Ctrl-W)
+9. History Repeats Itself (history, head, tail, <up arrow>)
+10. Editing Yourself (Ctrl-A, Ctrl-E, Ctrl-K, Ctrl-W)
+11. Create and Destroy (echo, cat, rm, rmdir)
+12. Piping and Redirection (\|, >, >>, cut, sort, grep)
 13. Compressions and Archives (tar, gzip, gunzip)
 14. Forced Removal (rm -R)
 15. BASH Wildcard Characters (?, *, find, environment variables($), quotes/ticks)
@@ -141,33 +141,6 @@ A prompt is a short text message at the start of the command line and ends with 
 
 <img src="figures/cli_figure4.png" alt="cli_figure4" width="800px"/>
 
-## Directory Structure
-
-Absolute path: always starts with ”/”
-
-/share/workshop/msettles/cli
-
-the folder (or file) cli in the folder msettles in the folder workship in the folder share from root.
-
-Relative path: always relative to our current location.
-
-_a single dot (.) refers to the current directory_  
-_two dots (..) refers to the directory one level up_  
-
-<img src="figures/cli_figure2.png" alt="cli_figure2" width="500px"/>
-
-Usually, /home is where the user accounts reside, ie. user’s 'home' directory.
-For example, for a user that has a username of “msettles”: their home directory is /home/msettles
-It is the directory that a user is located after starting a new shell or logging into a remote server .
-
-The tilde (~) is a short form of a user’s home directory.
-
-## Syntax of a command
-
-* A command plus the required parameters/arguments
-* The separator used in issuing a command is space, number of spaces does not matter
-
-<img src="figures/cli_figure3.png" alt="cli_figure3" width="800px"/>
 
 ## Command Line Basics
 
@@ -190,7 +163,7 @@ Because one of the first things that's good to know is *how to escape once you'v
 
     sleep 1000  # wait for 1000 seconds!
 
-Use Ctrl-c (shows as '^C' in the terminal) to exit (kill) a command. In some cases, a different key sequence is required (Ctrl-d). Note that anything including and after a "#" symbol is ignored, i.e. a comment.
+Use Ctrl-c (shows as '^C' in the terminal) to exit (kill) a command. In some cases, a different key sequence is required (Ctrl-d). Note that anything including and after a "#" symbol is ignored, i.e. a comment. **So in all the commands below, you do not have to type anything including and past a "#".**
 
 
 #### Options
@@ -199,17 +172,17 @@ Each command can act as a basic tool, or you can add 'options' or 'flags' that m
 
     ls -R /
 
-Lists directories and files *recursively*. how do I know which options do what?
+Lists directories and files *recursively*. This will be a very long output, so use Ctrl-C to break out of it. Sometimes you have to press Ctrl-C many times to get the terminal to recognize it. In order to know which options do what, you can use the manual pages. To look up a command in the manual pages type "man" and then the command name. So to look up the options for "ls", type:
 
     man ls
 
-Navigate this page using the up and down arrow keys, PageUp and PageDown, q to quit. In this manual page, find the following options, and then try those commands.
+Navigate this page using the up and down arrow keys, PageUp and PageDown, and then use q to quit out of the manual. In this manual page, find the following options, quit the page, and then try those commands. You could even open another terminal, log in again, and run manual commands in that terminal.
 
-    ls -l # Not specifying a directory means that the current directory will be used
-    ls -a
-    ls -l -a
-    ls -la  # option 'smushing' ... when no values need specifying
-    ls -ltrha
+    ls -l /share/genomes/GENCODE/GRCm38.p6/ # long format, gives permission values, owner, group, size, time, and name
+    ls -a /share/genomes/GENCODE/GRCm38.p6/
+    ls -l -a /share/genomes/GENCODE/GRCm38.p6/
+    ls -la  /share/genomes/GENCODE/GRCm38.p6/ # option 'smushing' ... when no values need specifying
+    ls -ltrha /share/genomes/GENCODE/GRCm38.p6/
     
 And finally adding color: 
 
@@ -225,6 +198,34 @@ Quick aside: what if I want to use same options repeatedly? and be lazy? You can
     alias ll='ls -lah'
     ll
 
+
+## Directory Structure
+
+Absolute path: always starts with ”/” - the root folder
+
+/share/workshop/msettles/cli
+
+the folder (or file) "cli" in the folder "msettles" in the folder "workshop" in the folder "share" from the root folder.
+
+Relative path: always relative to our current location.
+
+_a single dot (.) refers to the current directory_  
+_two dots (..) refers to the directory one level up_  
+
+<img src="figures/cli_figure2.png" alt="cli_figure2" width="500px"/>
+
+Usually, /home is where the user accounts reside, ie. users' 'home' directories.
+For example, for a user that has a username of “msettles”: their home directory is /home/msettles
+It is the directory that a user starts in after starting a new shell or logging into a remote server.
+
+The tilde (~) is a short form of a user’s home directory.
+
+## Syntax of a command
+
+* A command plus the required parameters/arguments
+* The separator used in issuing a command is space, number of spaces does not matter
+
+<img src="figures/cli_figure3.png" alt="cli_figure3" width="800px"/>
 
 ## Quiz 1
 
@@ -295,11 +296,11 @@ The filesystem you're working on is like the branching root system of a tree. Th
 
 <img src="figures/cli_figure5.png" alt="cli_figure5" width="800px"/>
 
-You should also notice the location changes in your prompt.
+**You should also notice the location changes in your prompt.**
 
 ## Absolute and Relative Paths
 
-You can think of paths like addresses. You can tell your friend how to go to a particular store *from where they are currently* (a 'relative' path), or *from the main Interstate Highway that everyone uses* (in this case, the root of the filesystem, '/' ... this is an 'absolute' path). Both are valid. But absolute paths can't be confused, because they always start off from the same place. Relative paths, on the other hand, could be totally wrong for your friend *if you assume they're somewhere they're not*. With this in mind, let's try a few more:
+You can think of paths like addresses. You can tell your friend how to go to a particular store *from where they are currently* (a 'relative' path), or *from the main Interstate Highway that everyone uses* (in this case, the root of the filesystem, '/' ... this is an 'absolute' path). Both are valid. But absolute paths can't be confused, because they always start off from the same place, and are unique. Relative paths, on the other hand, could be totally wrong for your friend *if you assume they're somewhere they're not*. With this in mind, let's try a few more:
 
     cd ~  # let's start at home
 
@@ -356,7 +357,7 @@ myQuestions2 = [
     correctAnswer: "a"
   },
   {
-    question: "What happens if you press tab once without any command?",
+    question: "What happens if you press tab twice quickly without any command?",
     answers: {
       a: "Nothing happens",
       b: "Shows a listing of everything in the current directory",
@@ -381,6 +382,43 @@ buildQuiz(myQuestions2, quizContainer2);
 submitButton2.addEventListener('click', function() {showResults(myQuestions2, quizContainer2, resultsContainer2);});
 </script>
 
+## History Repeats Itself
+
+Linux remembers everything you've done (at least in the current shell session), which allows you to pull steps from your history, potentially modify them, and redo them. This can obviously save a lot of time and typing.
+
+The 'head' and 'tail' commands view the first 10 (by default) lines of a file and last 10 lines of a file (type 'man head' or 'man tail' to consult their manuals).
+    <up arrow>  # last command
+    <up>  # next-to-last command
+    <down>  # last command, again
+    <down>  # current command, empty or otherwise
+    history  # usually too much for one screen, so ...
+    history | head # we discuss pipes (the vertical bar) below
+    history | tail
+    history | less # use 'q' to exit less
+    ls -l
+    pwd
+    history | tail
+    !560  # re-executes 560th command (yours will have different numbers; choose the one that recreates your really important result!)
+
+    ## Editing Yourself
+
+Here are some more ways to make editing previous commands, or novel commands that you're building up, easier:
+
+    <up><up>  # go to some previous command, just to have something to work on
+    <ctrl-a>  # go to the beginning of the line
+    <ctrl-e>  # go to the end of the line
+    # now use left and right to move to a single word (surrounded by whitespace: spaces or tabs)
+    <ctrl-k>  # delete from here to end of line
+    <ctrl-w>  # delete from here to beginning of preceeding word
+    blah blah blah<ctrl-w><ctrl-w>  # leaves you with only one 'blah'
+
+You can also search your history from the command line:
+
+    <ctrl-r>fir  # should find most recent command containing 'fir' string: echo 'first' > test.txt
+    <enter>  # to run command
+    <ctrl-c>  # get out of recursive search
+    <ctr-r>  # repeat <ctrl-r> to find successively older string matches
+
 ## Create and Destroy
 
 We already learned one command that will create a file, touch. Lets create a folder in /share/workshop for you to work in and then another directory cli. We will use the environment variable $USER, that contains your username.
@@ -392,7 +430,7 @@ We already learned one command that will create a file, touch. Lets create a fol
 
 echo text then redirect ('>') to a file.
 
-    cat first.txt  # 'cat' means 'concatenate'
+    cat first.txt  # 'cat' means 'concatenate', or just spit the contents of the file to the screen
 
 why 'concatenate'? try this:
 
@@ -420,20 +458,78 @@ So, 'mkdir' and 'rmdir' are used to create and destroy (empty) directories. 'rm'
 
 So 'touch' creates empty files, or updates the 'last modified' time. Note that the options on the 'ls' command you used here give you a Long listing, of All files, in Reverse Time order (l, a, r, t).
 
+## Forced Removal
+
+When you're on the command line, there's no 'Recycle Bin'. Since we've expanded a whole directory tree, we need to be able to quickly remove a directory without clearing each subdirectory and using 'rmdir'.
+
+    cd
+    mkdir -p rmtest/dir1/dir2 # the -p option creates all the directories at once
+    rmdir rmtest # gives an error since rmdir can only remove directories that are empty
+    rm -rf rmtest # will remove the directory and EVERYTHING in it
+
+Here -r = recursively remove sub-directories, -f means *force*. Obviously, be careful with 'rm -rf', there is no going back, if you delete something with rm, rmdir its gone! **There is no Recycle Bin on the Command-Line!**
+
+## Quiz 3
+
+<div id="quiz3" class="quiz"></div>
+<button id="submit3">Submit Quiz</button>
+<div id="results3" class="output"></div>
+<script>
+quizContainer3 = document.getElementById('quiz3');
+resultsContainer3 = document.getElementById('results3');
+submitButton3 = document.getElementById('submit3');
+
+myQuestions3 = [
+  {
+    question: "In the command 'rm -rf rmtest', what is 'rmtest'?",
+    answers: {
+      a: "An option",
+      b: "An argument",
+      c: "A command",
+      d: "A choice"
+    },
+    correctAnswer: "b"
+  },
+  {
+    question: "Make a directory called test and then run 'rm test'. What happens?",
+    answers: {
+      a: "Nothing happens",
+      b: "The directory is removed",
+      c: "The terminal exits",
+      d: "You get an error message"
+    },
+    correctAnswer: "d"
+  },
+  {
+    question: "Use ls to find the size (in bytes) of the last file in the /sbin directory.",
+    answers: {
+      a: "33211",
+      b: "77064",
+      c: "1058216",
+      d: "1103"
+    },
+    correctAnswer: "b"
+  }
+];
+
+buildQuiz(myQuestions3, quizContainer3);
+submitButton3.addEventListener('click', function() {showResults(myQuestions3, quizContainer3, resultsContainer3);});
+</script>
+
 ## Piping and Redirection
 
 Pipes ('\|') allow commands to hand output to other commands, and redirection characters ('>' and '>>') allow you to put output into files.
 
     echo 'first' > test.txt
-    cat test.txt
+    cat test.txt # outputs the contents of the file to the terminal
     echo 'second' > test.txt
     cat test.txt
     echo 'third' >> test.txt
     cat test.txt
 
-The '>' character redirects output of a command that would normally go to the screen instead into a specified file. '>' replaces, '>>' appends.
+The '>' character redirects output of a command that would normally go to the screen instead into a specified file. '>' overwrites the file, '>>' appends to the file.
 
-cuts character one to three, from every line, from file 'test.txt'
+The 'cut' command pieces of lines from a file line by line. This command cuts characters 1 to 3, from every line, from file 'test.txt'
 
     cut -c 1-3 test.txt  
 
@@ -441,57 +537,12 @@ same thing, piping output of one command into input of another
 
     cat test.txt | cut -c 1-3  
 
-pipes cat to cut to sort (-r means reverse order sort), and then grep searches for pattern ('s') matches.
+This pipes cat to cut to sort (-r means reverse order sort), and then grep searches for pattern ('s') matches (i.e. for any line where an 's' appears anywhere on the line.)
 
     cat test.txt | cut -c 1-3 | sort -r
     cat test.txt | cut -c 1-3 | sort -r | grep s
 
 This is a great way to build up a set of operations while inspecting the output of each step in turn. We'll do more of this in a bit.
-
-## History Repeats Itself
-
-Linux remembers everything you've done (at least in the current shell session), which allows you to pull steps from your history, potentially modify them, and redo them. This can obviously save a lot of time and typing.
-
-The 'head' and 'tail' commands view the first 10 (by default) lines of a file and last 10 lines of a file (type 'man head' or 'man tail' to consult their manuals).
-    <up arrow>  # last command
-    <up>  # next-to-last command
-    <down>  # last command, again
-    <down>  # current command, empty or otherwise
-    history  # usually too much for one screen, so ...
-    history | head
-    history | tail
-    history | tail -n 30
-    history | less
-    cat test.txt | cut -c 1-3 | sort -r | grep s > reallyImportantResult.txt
-    rm reallyImportantResult.txt  # whoops! didn't mean to do that!
-    history | tail
-    !560  # re-executes 560th command (yours will have different numbers; choose the one that recreates your really important result!)
-
-You can also search your history from the command line:
-
-    <ctrl-r>fir  # should find most recent command containing 'fir' string: echo 'first' > test.txt
-    <enter>  # to run command
-    <ctrl-c>  # get out of recursive search
-    <ctr-r>  # repeat <ctrl-r> to find successively older string matches
-
-### CHALLENGE
-
-What's the first command you executed today? How many times have you used the 'man' command today? Whatever that number is, it should be more! Just kidding. Sort of.
-
-### CHALLENGE
-
-How would you create a second text file - let's say 'test2.txt' - with the line that says 'third' *before* the line that says 'second'? Without directly editing the file with a text editor, of course...
-
-## Editing Yourself
-Here are some more ways to make editing previous commands, or novel commands that you're building up, easier:
-
-    <up><up>  # go to some previous command, just to have something to work on
-    <ctrl-a>  # go to the beginning of the line
-    <ctrl-e>  # go to the end of the line
-    # now use left and right to move to a single word (surrounded by whitespace: spaces or tabs)
-    <ctrl-k>  # delete from here to end of line
-    <ctrl-w>  # delete from here to beginning of preceeding word
-    blah blah blah<ctrl-w><ctrl-w>  # leaves you with only one 'blah'
 
 
 ## Compression and Archives
@@ -521,20 +572,10 @@ Here -x = extract, -z = use gzip/gunzip, -v = verbose (show each file in archive
 
 Note that, unlike Windows, linux does not depend on file extensions to determine file behavior. So you could name a tarball 'fish.puppy' and the extract command above should work just fine. The only thing that should be different is that tab-completion doesn't work within the 'tar' command if it doesn't see the 'correct' file extension.    
 
-## Forced Removal
-
-When you're on the command line, there's no 'Recycle Bin'. Since we've expanded a whole directory tree, we need to be able to quickly remove a directory without clearing each subdirectory and using 'rmdir'.
-
-    rm -rf PhiX
-
-Here -r = recursively remove sub-directories, -f means *force*. We actually want to use those directories, so un-archive them again!
-
-Obviously, be careful with 'rm -rf', there is no going back, if you delete something with rm, rmdir its gone!
-
 
 ## BASH Wildcard Characters
 
-When we want to specify or operate on sets of files all at once.
+We can use 'wildcard characters' when we want to specify or operate on sets of files all at once.
 
     ls ?hiX/Illumina
 
@@ -542,12 +583,12 @@ list files in Illumina sub-directory of any directory ending in 'hiX'
 
     ls PhiX/Illumina/RTA/Sequence/*/*.fa
 
-list all .fa files a few directories down. So, '?' fills in for zero or one character, '\*' fills in for zero or more characters. find can be used to locate files of a server form.
+list all files ending in '.fa' a few directories down. So, '?' fills in for zero or one character, '\*' fills in for zero or more characters. The 'find' command can be used to locate files using a similar form.
 
     find . -name "*.f*"
     find . -name "*.f?"
 
-how are this different from the previous command?
+how is this different from the previous ls commands?
 
 #### Quick Note About the Quote(s)
 
@@ -562,6 +603,55 @@ However, some commands try to be 'smarter' about this behavior, so it's a little
     echo `$VRBL`  # tries to execute a command with the name *someText*
     newVRBL=`echo $VRBL`
     echo $newVRBL
+
+
+## Quiz 4
+
+<div id="quiz4" class="quiz"></div>
+<button id="submit4">Submit Quiz</button>
+<div id="results4" class="output"></div>
+<script>
+quizContainer4 = document.getElementById('quiz4');
+resultsContainer4 = document.getElementById('results4');
+submitButton4 = document.getElementById('submit4');
+
+myQuestions4 = [
+  {
+    question: "In the command 'rm -rf rmtest', what is 'rmtest'?",
+    answers: {
+      a: "An option",
+      b: "An argument",
+      c: "A command",
+      d: "A choice"
+    },
+    correctAnswer: "b"
+  },
+  {
+    question: "Make a directory called test and then run 'rm test'. What happens?",
+    answers: {
+      a: "Nothing happens",
+      b: "The directory is removed",
+      c: "The terminal exits",
+      d: "You get an error message"
+    },
+    correctAnswer: "d"
+  },
+  {
+    question: "Use ls to find the size (in bytes) of the last file in the /sbin directory.",
+    answers: {
+      a: "33211",
+      b: "77064",
+      c: "1058216",
+      d: "1103"
+    },
+    correctAnswer: "b"
+  }
+];
+
+buildQuiz(myQuestions4, quizContainer4);
+submitButton4.addEventListener('click', function() {showResults(myQuestions4, quizContainer4, resultsContainer4);});
+</script>
+
 
 ## Manipulation of a FASTA File
 
