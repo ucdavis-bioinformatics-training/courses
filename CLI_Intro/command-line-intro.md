@@ -537,7 +537,7 @@ same thing, piping output of one command into input of another
 
     cat test.txt | cut -c 1-3  
 
-This pipes cat to cut to sort (-r means reverse order sort), and then grep searches for pattern ('s') matches (i.e. for any line where an 's' appears anywhere on the line.)
+This pipes (i.e., sends the output of) cat to cut to sort (-r means reverse order sort), and then grep searches for pattern ('s') matches (i.e. for any line where an 's' appears anywhere on the line.)
 
     cat test.txt | cut -c 1-3 | sort -r
     cat test.txt | cut -c 1-3 | sort -r | grep s
@@ -562,7 +562,7 @@ The '-c' leaves the original file alone, but dumps expanded output to screen
 
 Tape archives, or .tar files, are one way to compress entire folders and all contained folders into one file. When they're further compressed they're called 'tarballs'. We can use wget (web get).
 
-    wget ftp://igenome:G3nom3s4u@ussd-ftp.illumina.com/PhiX/Illumina/RTA/PhiX_Illumina_RTA.tar.gz
+    wget http://igenomes.illumina.com.s3-website-us-east-1.amazonaws.com/PhiX/Illumina/RTA/PhiX_Illumina_RTA.tar.gz
 
 The .tar.gz and .tgz are *commonly used* extensions for compressed tar files, when gzip compression is used. The application tar is used to uncompress .tar files
 
@@ -600,9 +600,9 @@ The quote characters " and ' are different. In general, single quotes preserve t
 
 However, some commands try to be 'smarter' about this behavior, so it's a little hard to predict what will happen in all cases. It's safest to experiment first when planning a command that depends on quoting ... list filenames first, instead of changing them, etc. Finally, the 'backtick' characters \` (same key - unSHIFTED - as the tilde ~) causes the shell to interpret what's between them as a command, and return the result.
 
-    echo `$VRBL`  # tries to execute a command with the name *someText*
-    newVRBL=`echo $VRBL`
-    echo $newVRBL
+     # counts the number of lines in file and stores result in the LINES variable
+    LINES=`cat PhiX/Illumina/RTA/Sequence/Bowtie2Index/genome.1.bt2 | wc -l` 
+    echo $LINES
 
 
 ## Quiz 4
@@ -617,34 +617,34 @@ submitButton4 = document.getElementById('submit4');
 
 myQuestions4 = [
   {
-    question: "In the command 'rm -rf rmtest', what is 'rmtest'?",
+    question: "In the PhiX directory, count the number of the files ending in '.fa'. You will need to use the 'wc' command:",
     answers: {
-      a: "An option",
-      b: "An argument",
-      c: "A command",
-      d: "A choice"
-    },
-    correctAnswer: "b"
-  },
-  {
-    question: "Make a directory called test and then run 'rm test'. What happens?",
-    answers: {
-      a: "Nothing happens",
-      b: "The directory is removed",
-      c: "The terminal exits",
-      d: "You get an error message"
+      a: "15",
+      b: "9",
+      c: "7",
+      d: "10"
     },
     correctAnswer: "d"
   },
   {
-    question: "Use ls to find the size (in bytes) of the last file in the /sbin directory.",
+    question: "Which of the following commands will list all of the txt files in all the 'Genes' directories?",
     answers: {
-      a: "33211",
-      b: "77064",
-      c: "1058216",
-      d: "1103"
+      a: "ls PhiX/Illumina/RTA/*o*/Archives/*/*/*.txt",
+      b: "ls PhiX/Illumina/RTA/A*/Archives/*/*.txt",
+      c: "ls PhiX/Illumina/RTA/S*/Archives/*/*/*.txt",
+      d: "ls PhiX/Illumina/RTA/Annotation/Genes/*.text"
     },
-    correctAnswer: "b"
+    correctAnswer: "a"
+  },
+  {
+    question: "Find the 'genome.fa' file in the PhiX directory. Use pipes to get characters 640 to 700 in the second line of the file:",
+    answers: {
+      a: "GCTCGTCGCTGCGTTGAGGCTTGCGTTTATGGTACGCTGGACTTTGTAGGATACCCTCGCT",
+      b: "TATTAAGCTCATTCAGGCTTCTGCCGTTTTGGATTTAACCGAAGATGATTTCGATTTTCTG",
+      c: "ATTATGTTCATCCCGTCAACATTCAAACGGCCTGTCTCATCATGGAAGGCGCTGAATTTAC",
+      d: "GGATTACTATCTGAGTCCGATGCTGTTCAACCACTAATAGGTAAGAAATCATGAGTCAAGT"
+    },
+    correctAnswer: "c"
   }
 ];
 
@@ -682,11 +682,11 @@ Only one FASTA sequence entry, since only one header line ('>gi\|somethingsometh
 
     cat phix.fa
 
-This may not be useful for anything larger than a virus! Let's look at start codon and 2 following:
+This may not be useful for anything larger than a virus! Let's look at the start codon and the two following codons:
 
     grep --color "ATG......" phix.fa
 
-'.' characters are the single-character wildcards for grep
+'.' characters are the single-character wildcards for grep. So "ATG......" matches any set of 9 characters that starts with ATG.
 
 Use the --color  '-o' option to **o**nly print the pattern matches, one per line
 
@@ -700,7 +700,7 @@ Use the 'cut' command with '-c' to select characters 4-6, the second codon
 
     grep --color  -o "ATG......" phix.fa | cut -c4-6 | sort
 
-Combine successive identical sequences, but count them ('-c' option)
+Combine successive identical sequences, but count them using the 'uniq' command with the '-c' option
 
     grep --color  -o "ATG......" phix.fa | cut -c4-6 | sort | uniq -c
 
@@ -712,22 +712,13 @@ Finally sort using reverse numeric order ('-rn')
 
 This may not be a particularly useful thing to do with a genomic FASTA file, but it illustrates the process by which one can build up a string of operations, using pipes, in order to ask quantitative questions about sequence content. More generally than that, this process allows one to ask questions about files and file contents and the operating system, and verify at each step that the process so far is working as expected. The command line is, in this sense, really a modular workflow management system.
 
-### CHALLENGE
-
-Many programs and data archives contain files named something like 'readme' or 'README' that contains important information for the user. How many of these files are there in the PhiX directory tree? How would you look at their contents?
 
 
 ## Symbolic Links
 
-Since copying or even moving large files (like sequence data) around your filesystem may be impractical, we can use links to reference 'distant' files without duplicating the data in the files. Symbolic links are disposable pointers that refer to other files, but behave like the referenced files in commands.
+Since copying or even moving large files (like sequence data) around your filesystem may be impractical, we can use links to reference 'distant' files without duplicating the data in the files. Symbolic links are disposable pointers that refer to other files, but behave like the referenced files in commands. I.e., they are essentially 'Shortcuts' (to use a Windows term) to a file or directory.
 
-**You should, by default, always use a symbolic (-s) link.**
-
-Hard links point to the location of the data on the hard drive while symbolic links point to an secondary location of the data on the hard drive (or the original file itself)
-
-![](./hard_vs_symbolic.png)
-
-Draw back of hard links is that deleting the original file become much more difficult because all hard links need to be deleted first.
+The 'ln' command creates a link. **You should, by default, always create a symbolic link using the -s option.**
 
     ln -s PhiX/Illumina/RTA/Sequence/WholeGenomeFasta/genome.fa .
     ls -ltrhaF  # notice the symbolic link pointing at its target
@@ -752,30 +743,6 @@ Empty since no errors occured.
 
 Saving STDOUT is pretty routine (you want your results, yes?), but remember that explicitly saving STDERR is important on a remote server, since you may not directly see the 'screen' when you're running jobs.
 
-## Paste Command
-
-The paste command is useful in creating tables.
-
-    echo 'WT1' > b
-    echo 'WT2' >> b
-    echo 'control1' >> b
-    echo 'control2' >> b
-    cat b
-
-Now we can number our four samples to conveniently refer to them in order
-
-    for i in {1..4}; do echo $i >> a; done
-    cat a
-    paste a b > c
-    cat c
-
-
-
-## Table of Processes (top)
-
-The 'top' command prints a self-updating table of running processes and system stats. Use 'q' to exit top, 'z' to toggle better color contrast, 'M' to sort by memory use, 'P' to sort by processor use, and 'c' to toggle display of the full commands. Hit '1' to toggle display of all processors, and hit 'u' followed by typing in a username in order to only show processes (jobs) owned by that user.
-
-<img src="figures/cli_figure6.png" alt="cli_figure6" width="800px"/>
 
 ## Shell Scripts, File Permissions
 
@@ -842,6 +809,51 @@ OK! So let's run this script, feeding it the phiX genome. When we put the genome
 The script's grep command splits out every character in the file on a separate line, then sorts them so it can count the occurrences of every unique character and show the most frequent characters first ... a quick and dirty way to get at GC content.
 
 
+## Quiz 5
 
+<div id="quiz5" class="quiz"></div>
+<button id="submit5">Submit Quiz</button>
+<div id="results5" class="output"></div>
+<script>
+quizContainer5 = document.getElementById('quiz5');
+resultsContainer5 = document.getElementById('results5');
+submitButton5 = document.getElementById('submit5');
+
+myQuestions5 = [
+  {
+    question: "In the PhiX fasta file, find the stop codon TGA and find the 3rd codon upstream of each stop codon. What is the most common codon?",
+    answers: {
+      a: "GAT",
+      b: "TTT",
+      c: "CGC",
+      d: "TGC"
+    },
+    correctAnswer: "d"
+  },
+  {
+    question: "What happens when you remove a symbolic link to a file?",
+    answers: {
+      a: "The file is deleted",
+      b: "The link is deleted, but the file is not",
+      c: "The link and the file are both deleted",
+      d: "You get an error"
+    },
+    correctAnswer: "b"
+  },
+  {
+    question: "In your shell script change the pipeline so that it only counts the nucleotides (and not the header) AND it only counts the first 100 bases. How many A's are there?",
+    answers: {
+      a: "35",
+      b: "30",
+      c: "31",
+      d: "29"
+    },
+    correctAnswer: "b"
+  }
+];
+
+buildQuiz(myQuestions5, quizContainer5);
+submitButton5.addEventListener('click', function() {showResults(myQuestions5, quizContainer5, resultsContainer5);});
+</script>
 
 
