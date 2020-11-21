@@ -74,7 +74,7 @@ function showResults(myq, qc, rc){
 # Introduction to Command Line Interface
 
 ## Outline:
-1. What is the command line?
+1. [What is the command line?](##-What-is-the-Command-Line-Interface)
 2. Directory Structure 
 3. Syntax of a Command
 4. Logging Into a Remove Server
@@ -419,6 +419,28 @@ You can also search your history from the command line:
     <ctrl-c>  # get out of recursive search
     <ctr-r>  # repeat <ctrl-r> to find successively older string matches
 
+## Transferring files
+### For Macs/Linux/Windows 10
+
+1. Open a Terminal/Command Prompt on your **local** machine.
+2. Using the cd command go to the directory you want to copy to.
+3. Use scp (secure copy, a remote file copying program):
+
+    scp username@tadpole.genomecenter.ucdavis.edu:/full/path/to/file .
+
+4. Replace 'username' with your username and replace '/full/path/to/file' with the full path to the file you want to transfer. Note that there is a "." at the end of the command, which is where to put the file, i.e. your current directory. You will have to type in your password.
+
+### For Windows 8 and less
+
+1. Open up WinSCP. If you haven't installed it, get WinSCP [here](https://winscp.net/eng/download.php).
+2. In the Host Name field, type **tadpole.genomecenter.ucdavis.edu**
+2. Type in your username and password.
+3. Make sure the File Protocol is SFTP.
+4. Press "Login".
+5. Look at the [documentation](https://winscp.net/eng/docs/getting_started) to learn how to transfer items.
+
+**Try transferring a file from tadpole to your local computer.**
+
 ## Create and Destroy
 
 We already learned one command that will create a file, touch. Lets create a folder in /share/workshop for you to work in and then another directory cli. We will use the environment variable $USER, that contains your username.
@@ -655,7 +677,7 @@ submitButton4.addEventListener('click', function() {showResults(myQuestions4, qu
 
 ## Manipulation of a FASTA File
 
-We just found the phiX-174 genome, so let's copy it to our current directory so we can play with it:
+We just found the phiX-174 genome, so let's copy it (using the 'cp' command) to our current directory so we can play with it:
 
     cp ./PhiX/Illumina/RTA/Sequence/WholeGenomeFasta/genome.fa phix.fa    
 
