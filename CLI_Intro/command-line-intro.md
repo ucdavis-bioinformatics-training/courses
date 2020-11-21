@@ -74,7 +74,7 @@ function showResults(myq, qc, rc){
 # Introduction to Command Line Interface
 
 ## Outline:
-1. [What is the command line?](##-What-is-the-Command-Line-Interface)
+1. [What is the command line?](#-What-is-the-Command-Line-Interface)
 2. Directory Structure 
 3. Syntax of a Command
 4. Logging Into a Remove Server
@@ -87,7 +87,7 @@ function showResults(myq, qc, rc){
 11. Create and Destroy (echo, cat, rm, rmdir)
 12. Piping and Redirection (\|, >, >>, cut, sort, grep)
 13. Compressions and Archives (tar, gzip, gunzip)
-14. Forced Removal (rm -R)
+14. Forced Removal (rm -r)
 15. BASH Wildcard Characters (?, *, find, environment variables($), quotes/ticks)
 16. Manipulation of a FASTA file (cp, mv, wc -l/-c)
 17. Symbolic Links (ln -s)
@@ -104,7 +104,7 @@ function showResults(myq, qc, rc){
 </object>
 
 
-## What is the Command-Line Interface
+# What is the Command-Line Interface
 
 * The CLI is a tool into which one can type commands to perform tasks.
 * The user interface that accepts the typed responses and displays the data on the screen is called a shell: bash, tcsh…
