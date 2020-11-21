@@ -104,7 +104,7 @@ function showResults(myq, qc, rc){
 </object>
 
 
-# What is the Command-Line Interface
+## What is the Command-Line Interface
 
 * The CLI is a tool into which one can type commands to perform tasks.
 * The user interface that accepts the typed responses and displays the data on the screen is called a shell: bash, tcsh…
