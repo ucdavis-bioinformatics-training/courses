@@ -74,7 +74,7 @@ function showResults(myq, qc, rc){
 # Introduction to Command Line Interface
 
 ## Outline:
-1. [What is the command line?](#what-is-the-command-line-interface)
+1. What is the command line?
 2. Directory Structure 
 3. Syntax of a Command
 4. Logging Into a Remove Server
@@ -112,11 +112,11 @@ function showResults(myq, qc, rc){
 
 <img src="figures/cli_figure1.png" alt="cli_figure1" width="800px"/>
 
-# Logging In
+## Logging In
 
 In order to log in, you should have already created an account on our systems.
 
-## For Macs/Linux/Windows 10 - Logging In
+### For Macs/Linux/Windows 10 - Logging In
 
 1. For Macs, open a Terminal (usually under Applications/Utilities on a Mac), or install [iterm2](https://www.iterm2.com/). For Linux, just open a regular terminal. For Windows 10, open a command prompt by searching for and running "cmd".
  
@@ -128,7 +128,7 @@ where 'username' is replaced with your username. Press Enter. You will probably 
 
 3. Type in your password. No characters will display when you are typing. Press Enter.
 
-## For Windows 8 and less
+### For Windows 8 and less
 
 1. Download and install [PuTTY](http://www.putty.org/).
 2. Open up PuTTY
