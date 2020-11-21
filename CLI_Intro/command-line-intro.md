@@ -74,7 +74,7 @@ function showResults(myq, qc, rc){
 # Introduction to Command Line Interface
 
 ## Outline:
-1. [What is the command line?](#-What-is-the-Command-Line-Interface)
+1. [What is the command line?](#-what-is-the-command-line-interface)
 2. Directory Structure 
 3. Syntax of a Command
 4. Logging Into a Remove Server
