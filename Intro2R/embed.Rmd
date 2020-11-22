@@ -611,20 +611,20 @@ Topic 3. Import and export data in R
 
 ##### R base function read.table() is a general funciton that can be used to read a file in table format. The data will be imported as a data frame.
 
-```{r eval=FALSE}
+```{r}
 # There is a very convenient way to read files from the internet.
-data <- read.table(file="https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2017-August-Variant-Analysis-Workshop/master/friday/Intro2R/raw_counts.txt", sep="\t", header=T, stringsAsFactors=F)
+data1 <- read.table(file="https://github.com/ucdavis-bioinformatics-training/courses/raw/master/Intro2R/raw_counts.txt", sep="\t", header=T, stringsAsFactors=F)
 
 # To read a local file. If you have downloaded the raw_counts.txt file to your local machine, you may use the following command to read it in, by providing the full path for the file location. The way to specify the full path is the same as taught in the command line session.
-download.file("https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2017-August-Variant-Analysis-Workshop/master/friday/Intro2R/raw_counts.txt", "./raw_counts.txt")
-data <- read.table(file="./raw_counts.txt", sep="\t", header=T, stringsAsFactors=F)
+download.file("https://github.com/ucdavis-bioinformatics-training/courses/raw/master/Intro2R/raw_counts.txt", "./raw_counts.txt")
+data1 <- read.table(file="./raw_counts.txt", sep="\t", header=T, stringsAsFactors=F)
 
 ```
 
-To check what type of object *data* is in and take a look at the beginning part of the data.
+To check what type of object *data1* is in and take a look at the beginning part of the data.
 ```{r}
-is.data.frame(data)
-head(data)
+is.data.frame(data1)
+head(data1)
 ```
 
 
@@ -642,7 +642,7 @@ head(data)
 
 ```{r}
 # We are going to read a file over the internet by providing the url of the file.
-data2 <- read.csv(file="https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2017-August-Variant-Analysis-Workshop/master/friday/Intro2R/raw_counts.csv", stringsAsFactors=F)
+data2 <- read.csv(file="https://github.com/ucdavis-bioinformatics-training/courses/raw/master/Intro2R/raw_counts.csv", stringsAsFactors=F)
 
 # To look at the file:
 head(data2)
@@ -815,17 +815,17 @@ apply(my_matrix, MARGIN=1, sum)
 ?lapply()
 
 # generate some random data matrix
-data <- as.data.frame(matrix(rnorm(49), ncol=7), stringsAsFactors=F)
-dim(data)
+data1 <- as.data.frame(matrix(rnorm(49), ncol=7), stringsAsFactors=F)
+dim(data1)
 
 # calculate the sum for each row
-lapply(1:dim(data)[1], function(x){sum(data[x,])})
+lapply(1:dim(data1)[1], function(x){sum(data1[x,])})
 
 # comparing the results to apply() results
-apply(data, MARGIN=1, sum)
+apply(data1, MARGIN=1, sum)
 
 # calculate log10 of the sum of each row
-lapply(1:dim(data)[1], function(x){log10(sum(data[x,]))})
+lapply(1:dim(data1)[1], function(x){log10(sum(data1[x,]))})
 ```
 
 ##### The function sapply() works like function lapply(), but tries to simplify the output to the most elementary data structure that is possible. As a matter of fact, sapply() is a "wrapper" function for lapply(). By default, it returns a vector.
@@ -834,12 +834,12 @@ lapply(1:dim(data)[1], function(x){log10(sum(data[x,]))})
 # To check the syntax of using sapply():
 ?sapply()
 
-sapply(1:dim(data)[1], function(x){log10(sum(data[x,]))})
+sapply(1:dim(data1)[1], function(x){log10(sum(data1[x,]))})
 ```
 
 ##### If the "simplify" parameter is turned off, sapply() will produced exactly the same results as lapply(), in the form of a list. By default, "simplify" is turned on.
 ```{r}
-sapply(1:dim(data)[1], function(x){log10(sum(data[x,]))}, simplify=FALSE)
+sapply(1:dim(data1)[1], function(x){log10(sum(data1[x,]))}, simplify=FALSE)
 ```
 
 #### The function tapply() applys a function to each subset of a vector based on a second vector of factors.
@@ -897,19 +897,19 @@ kable(data.frame(Description=c("Mean", "Standard deviation", "Variance", "Minimu
 Calculate the mean expression for each sample.
 
 ```{r}
-apply(data, 2, mean)
+apply(data1, 2, mean)
 ```
 
 Calculate the range of expression for each sample.
 
 ```{r}
-apply(data, 2, range)
+apply(data1, 2, range)
 ```
 
 Calculate the quantiles of each samples.
 
 ```{r}
-apply(data, 2, quantile)
+apply(data1, 2, quantile)
 ```
 
 
@@ -939,7 +939,7 @@ lines(x,y, type="l")
 boxplot() can be used to summarize data.
 
 ```{r}
-boxplot(data, xlab="Sample ID", ylab="Raw Counts")
+boxplot(data1, xlab="Sample ID", ylab="Raw Counts")
 ```
 
 ```{r}
