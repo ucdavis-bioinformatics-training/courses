@@ -212,31 +212,6 @@ her2_expressed + 1
 
 <br>
 
-#### `r colFmt("Challenge:", 'blue')`
-
-* Create one variable that is named as "a" and has the value of 3. Create another variable that is named as "b" and has the value of "gene". What is the output of the operation *a + b*? What is the reason? 
-
-* Create another variable that is named as "c" and has the logical value of FALSE. What is the output of the operation *a + c*? What is the output of the operation *b + c*? Why?
-
-#### `r colFmt("Solution:", 'skyblue')`
-
-* Error occurs as following. The reason is that "+" is an arithmatic operator and requires numeric variables. Since "b" is a character variable, R cannot carry out the operation.
-
-
-```{r error=TRUE}
-a <- 3
-b <- "gene"
-a + b
-```
-
-* Because logical values can be converted to numeric values, this operation can be carried out properly by converting "c" to numerical value 0 first.
-
-```{r}
-c <- FALSE
-a + c
-```
-
-
 ## Quiz 1
 
 <div id="quiz1" class="quiz"></div>
@@ -249,32 +224,32 @@ submitButton1 = document.getElementById('submit1');
 
 myQuestions1 = [
   {
-    question: "What does the -h option for the ls command do?",
+    question: "Create a variable a and set it to 3, and a variable b set to 'gene'. What is a + b?",
     answers: {
-      a: "Creates a hard link to a file",
-      b: "Shows the file sizes in a human readable format",
-      c: "Shows the help page",
-      d: "Recursively lists directories"
+      a: "a",
+      b: "3",
+      c: "Gives an error",
+      d: "4"
+    },
+    correctAnswer: "c"
+  },
+  {
+    question: "Create another variable c set to FALSE. What is a + c?",
+    answers: {
+      a: "Gives an error",
+      b: "3",
+      c: "a",
+      d: "4"
     },
     correctAnswer: "b"
   },
   {
-    question: "What does the -l option for ls do?",
+    question: "What is 1 + TRUE?",
     answers: {
-      a: "Produces a listing of all the links",
-      b: "Produces a time stamp sorted list",
-      c: "Produces a log file",
-      d: "Produces a detailed format list"
-    },
-    correctAnswer: "d"
-  },
-  {
-    question: "Which option turns off the default sort in the ls output?",
-    answers: {
-      a: "-U",
-      b: "-t",
-      c: "--hide",
-      d: "-H"
+      a: "2",
+      b: "1",
+      c: "TRUE",
+      d: "FALSE"
     },
     correctAnswer: "a"
   }
@@ -378,17 +353,53 @@ summary(disease_stage)
 table(disease_stage)
 ```
 
-#### `r colFmt("Challenge:", 'blue')`
 
-* Try to add a new element to a factor. When the new element does not match any of the levels of the factor. What will happen? How should it be done to get a new factor with new levels and add new elements?
+## Quiz 2
 
-* Look at functions _levels_ and _relevel_. What does each of them do? Which one should be used when one wants to redefine the levels of a factor?
+<div id="quiz2" class="quiz"></div>
+<button id="submit2">Submit Quiz</button>
+<div id="results2" class="output"></div>
+<script>
+quizContainer2 = document.getElementById('quiz2');
+resultsContainer2 = document.getElementById('results2');
+submitButton2 = document.getElementById('submit2');
 
-#### `r colFmt("Solution:", 'skyblue')`
+myQuestions2 = [
+  {
+    question: "Try to add a new element to a factor. When the new element does not match any of the levels of the factor, what will happen?",
+    answers: {
+      a: "A new level will be added to the factor",
+      b: "A new element will be added to the factor",
+      c: "Nothing happens",
+      d: "Gives a warning"
+    },
+    correctAnswer: "d"
+  },
+  {
+    question: "You can type a '?' and then a function name to get help for that function. What does the 'relevel' function do?",
+    answers: {
+      a: "Sorts the factors",
+      b: "Overwrites the factor levels",
+      c: "Adds a new level to the factors",
+      d: "Reorders the levels"
+    },
+    correctAnswer: "d"
+  },
+  {
+    question: "What would the levels be for the following vector as a factor:<br>c('a','C','d','b',1,'!')",
+    answers: {
+      a: "a C d 1 !",
+      b: "! 1 a d C",
+      c: "1 a C d !",
+      d: "! 1 a C d"
+    },
+    correctAnswer: "d"
+  }
+];
 
-* When new elements have to be added to a factor, the most secure way to do it is to first combine the original vector data with the new data points first, then make the combined vector to a factor, at the same time define the desired levels.
-
-* First, by using the commands _?levels_ and _?relevel_, we can learn that _levels_ function provides the levels attribute of a factor, while _relevel_ function is to re-order the levels of a factor using the _ref_ level defined by user. In short, when one would like to redefine the levels of a factor, _relevel_ function should be used.
+buildQuiz(myQuestions2, quizContainer2);
+submitButton2.addEventListener('click', function() {showResults(myQuestions2, quizContainer2, resultsContainer2);});
+</script>
 
 
 <br>
@@ -518,28 +529,47 @@ rbind(meta.data, data.frame(patients_name="Patient7", disease_stage="S4", Family
 ```{r}
 expression.data <- data.frame(patients_name=c("Patient3", "Patient4", "Patient5", "Patient1", "Patient2", "Patient6"), EGFR=c(10, 472, 103784, 1782, 187, 18289), TP53=c(16493, 72, 8193, 1849, 173894, 1482))
 expression.data
-merge(meta.data, expression.data, by="patients_name")
+md2 <- merge(meta.data, expression.data, by="patients_name")
+md2
 ```
 <br>
 
-##### `r colFmt("Challenge:", 'blue')`
+## Quiz 2
 
-* In the previous example, we created *expression.data* with the same number of patients as *meta.data*. What if *expression.data* has less number of patients? As an exercise to understand how *merge* works, you can reduce the dimention of *expression.data* and check the *merge* results.
+<div id="quiz3" class="quiz"></div>
+<button id="submit3">Submit Quiz</button>
+<div id="results3" class="output"></div>
+<script>
+quizContainer3 = document.getElementById('quiz3');
+resultsContainer3 = document.getElementById('results3');
+submitButton3 = document.getElementById('submit3');
 
+myQuestions3 = [
+  {
+    question: "Find a function to add up the EGFR column in md2. What is the total?",
+    answers: {
+      a: "124524",
+      b: "124526",
+      c: "124528",
+      d: "124530"
+    },
+    correctAnswer: "a"
+  },
+  {
+    question: "Multiply my_matrix by itself, sum the columns, and then use the 'mean' function to find the mean:",
+    answers: {
+      a: "6198.642",
+      b: "6199.117",
+      c: "6199.583",
+      d: "6198.781"
+    },
+    correctAnswer: "c"
+  }
+];
 
-#### `r colFmt("Solution:", 'skyblue')`
-
-```{r}
-# subset the expression.data, which we learn later in the document
-new.expression.data <- expression.data[1:3,]
-merge(meta.data, new.expression.data, by="patients_name")
-# the above command matched the patients_name in new.expression.data to the patients_name in meta.data and merged the columns of those matched.
-# to include the rows in meta.data that has no matching patients_name from new.expression.data, one would have to modify one more parameter.
-merge(meta.data, new.expression.data, by="patients_name", all.x=TRUE)
-```
-
-
-<br>
+buildQuiz(myQuestions3, quizContainer3);
+submitButton3.addEventListener('click', function() {showResults(myQuestions3, quizContainer3, resultsContainer3);});
+</script>
 
 ---
 
@@ -784,6 +814,63 @@ write.csv()
 write.csv2()
 
 
+## Quiz 4
+
+<div id="quiz4" class="quiz"></div>
+<button id="submit4">Submit Quiz</button>
+<div id="results4" class="output"></div>
+<script>
+quizContainer4 = document.getElementById('quiz4');
+resultsContainer4 = document.getElementById('results4');
+submitButton4 = document.getElementById('submit4');
+
+myQuestions4 = [
+  {
+    question: "Using my_list, multiply the Ranking by the Score and find the mean in one command. What is the output?",
+    answers: {
+      a: "209.2743 without a warning",
+      b: "209.2743 with a warning",
+      c: "210.5461 without a warning",
+      d: "210.5461 with a warning"
+    },
+    correctAnswer: "b"
+  },
+  {
+    question: "Which of the following code will NOT get a result?",
+    answers: {
+      a: "gene_expression$ESR1",
+      b: "gene_expression['ESR1']",
+      c: "gene_expression[c(1,2,3,4)]",
+      d: "gene_expression[1:2]"
+    },
+    correctAnswer: "a"
+  },
+  {
+    question: "When you run this code:<br><br>my_list[1] * my_list[[1]]<br><br>you get an error. Why?",
+    answers: {
+      a: "Because you can't multiply a list and a number together.",
+      b: "Because you can't multiply a list with itself.",
+      c: "Because you can't multiply a list with another list.",
+      d: "All of the above."
+    },
+    correctAnswer: "d"
+  },
+  {
+    question: "Using data1 and the 'max' function, find the maximum value across columns C92, I563, and I861:",
+    answers: {
+      a: "69853",
+      b: "112754",
+      c: "88122",
+      d: "66890"
+    },
+    correctAnswer: "a"
+  }
+];
+
+buildQuiz(myQuestions4, quizContainer4);
+submitButton4.addEventListener('click', function() {showResults(myQuestions4, quizContainer4, resultsContainer4);});
+</script>
+
 ---
 
 Topic 4. Functions in R
@@ -993,8 +1080,8 @@ Here, we are going to write a function to calculate the area of a triangle given
 
 ```{r}
 my.area <- function(side1=side1, side2=side2, side3=side3){
-	circonference <- (side1 + side2 + side3) / 2
-	area <- sqrt(circonference * (circonference - side1) * (circonference - side2) * (circonference - side3))
+	circumference <- (side1 + side2 + side3) / 2
+	area <- sqrt(circumference * (circumference - side1) * (circumference - side2) * (circumference - side3))
 	return(area)
 }
 
@@ -1003,6 +1090,53 @@ my.area(side1=3, side2=4, side3=5)
 ```
 
 <br>
+
+## Quiz 5
+
+<div id="quiz5" class="quiz"></div>
+<button id="submit5">Submit Quiz</button>
+<div id="results5" class="output"></div>
+<script>
+quizContainer5 = document.getElementById('quiz5');
+resultsContainer5 = document.getElementById('results5');
+submitButton5 = document.getElementById('submit5');
+
+myQuestions5 = [
+  {
+    question: "Find the area of a triangle with sides 32, 22, and 40:",
+    answers: {
+      a: "352.3445",
+      b: "351.2478",
+      c: "350.2112",
+      d: "354.7849"
+    },
+    correctAnswer: "b"
+  },
+  {
+    question: "Use the 'sd' function along with sapply to get the standard deviation for every row in data1. Then find the maximum of those values:",
+    answers: {
+      a: "26106.23",
+      b: "26106.23",
+      c: "26106.23",
+      d: "26106.23"
+    },
+    correctAnswer: "a"
+  },
+  {
+    question: "Now, expand from the previous question to get only those rows whose standard deviation is greater than 20000. What is the row name?",
+    answers: {
+      a: "AT1G21310",
+      b: "AT3G09260",
+      c: "AT1G67090",
+      d: "AT3G53420"
+    },
+    correctAnswer: "b"
+  }
+];
+
+buildQuiz(myQuestions5, quizContainer5);
+submitButton5.addEventListener('click', function() {showResults(myQuestions5, quizContainer5, resultsContainer5);});
+</script>
 
 ---
 
