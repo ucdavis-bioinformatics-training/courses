@@ -260,8 +260,6 @@ In R, to get help information on a funciton, one may use the command:
 <P style="page-break-before: always">
 
 
-<!--html_preserve--><!DOCTYPE html>
-
 <html>
 
 <head>
