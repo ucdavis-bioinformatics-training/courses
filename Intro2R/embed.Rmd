@@ -110,6 +110,15 @@ library(dplyr)
 library(kableExtra)
 ```
 
+---
+
+**BEFORE YOU BEGIN, YOU NEED TO START AN R SESSION**
+
+You can run this tutorial in an IDE (like Rstudio) on your laptop, or you can run R on the command-line on tadpole by logging into tadpole in a terminal and running the following commands:
+
+module load R
+
+R
 
 ---
 
@@ -534,7 +543,7 @@ md2
 ```
 <br>
 
-## Quiz 2
+## Quiz 3
 
 <div id="quiz3" class="quiz"></div>
 <button id="submit3">Submit Quiz</button>
