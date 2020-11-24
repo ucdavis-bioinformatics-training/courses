@@ -119,9 +119,9 @@ Start an R session
 
 You can run this tutorial in an IDE (like Rstudio) on your laptop, or you can run R on the command-line on tadpole by logging into tadpole in a terminal and running the following commands:
 
-module load R
-
-R
+> module load R
+>
+> R
 
 ---
 
