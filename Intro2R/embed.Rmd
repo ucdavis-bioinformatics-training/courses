@@ -112,6 +112,9 @@ library(kableExtra)
 
 ---
 
+
+Start an R session
+====================
 **BEFORE YOU BEGIN, YOU NEED TO START AN R SESSION**
 
 You can run this tutorial in an IDE (like Rstudio) on your laptop, or you can run R on the command-line on tadpole by logging into tadpole in a terminal and running the following commands:
