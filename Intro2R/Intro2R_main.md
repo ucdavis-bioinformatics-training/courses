@@ -720,10 +720,8 @@ pre, code {
 <h1>Start an R session</h1>
 <p><strong>BEFORE YOU BEGIN, YOU NEED TO START AN R SESSION</strong></p>
 <p>You can run this tutorial in an IDE (like Rstudio) on your laptop, or you can run R on the command-line on tadpole by logging into tadpole in a terminal and running the following commands:</p>
-<blockquote>
-<p>module load R</p>
-<p>R</p>
-</blockquote>
+    module load R
+    R
 <hr />
 </div>
 <div id="topics-covered-in-this-introduction-to-r" class="section level1">
